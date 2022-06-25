@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap reboot (для сброса стилей) -->
+	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+
+	<!-- Bootstrap сетка -->
+	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+	<!-- Шрифты с Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block title %}
+        {% if title %}
+          <title>{{ title }}</title>
+        {% else %}
+          <title>Udiliya</title>
+        {% endif %}
+    {% endblock title %}
+
+</head>
+
+
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="sb_block">
+                <img src="{{url_for('static', filename='img/Sber_logo.png')}}" class="sb_logo">
+            </div>
+
+            <div class="logo_block">
+                <img src="{{url_for('static', filename='img/mini_logo_udi_bez_fona.png')}}" class="logo">
+            </div>
+
+            <ul class="main_menu">
+                <li><a href="{{url_for('menu')}}"><p>Главная</p></a></li>
+                <li><a href="{{url_for('authorization')}}"><p>Мой аккаунт</p></a></li>
+            </ul>
+        </header>
+
+        <div class="row">
+            <div class="se">
+                <form action="" method="GET">
+                    <input type="text" class="form-control" placeholder="Введите свой город"
+                           name="q" value="{{ request.args.get('q', '') }}">
+                    <button></button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <h1>   ,jhgfv </h1>
+        <h1>   ,jhgfv </h1>
+        <h2>{{ location }}</h2>
+            <table class="scroll-table">
+                <thead>
+                <tr class="table-secondary">
+                    <th scope="col">Место</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Город</th>
+                    <th scope="col">Рейтинг</th>
+                </tr>
+                </thead>
+            </table>
+            <div class="scroll-table-body">
+                <table>
+                    <tbody>
+                    {% for item in users %}
+                    <tr>
+                        <td>{{ users.index(item) + 1}}</td>
+                        <td>{{item[1]}} {{item[2]}}</td>
+                        <td>{{item[-1]}}</td>
+                        <td>{{item[5]}}</td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+    </div>
+</body>

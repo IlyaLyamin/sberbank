@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap reboot (для сброса стилей) -->
+	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+
+	<!-- Bootstrap сетка -->
+	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+	<!-- Шрифты с Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auto_css.css') }}">
+
+    {% block title %}
+        {% if title %}
+          <title>{{ title }}</title>
+        {% else %}
+          <title>Udiliya</title>
+        {% endif %}
+    {% endblock title %}
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <form class="box" method="post" action="/authorization">
+                        <h1>Авторизация</h1>
+                        {{ form.hidden_tag() }}
+                        <p class="text-muted"> Пожалуйста введите свою почту и ID</p>
+                        {{ form.email_f(type="form-control", placeholder="email") }}
+                        {{ form.id_f(type="form-control", placeholder="ID") }}
+                        <p>{{ message }}</p>
+                        <a class="forgot text-muted" href="#">Регистрация</a>
+                        <div><button>Войти</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
