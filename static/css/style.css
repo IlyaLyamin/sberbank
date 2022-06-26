@@ -70,19 +70,18 @@ body {
     min-width: 25px;
     height: 250px;
     min-height: 25px;
-    margin-left: 10.5%;
+    margin-left: 9%;
+    margin-top: 2%;
 }
 
 
 .logo {
-    height: 100%;
-    margin-left: 25px;
+    height: 60%;
 }
 
 .sb_block {
     float: left;
     width: 30%;
-    margin: 0 auto;
 }
 
 .sb_logo {
@@ -283,4 +282,155 @@ tr:hover td{
 }
 ::-webkit-scrollbar-thumb {
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+
+/* account */
+
+.container-account {
+    max-width: 1800px;
+    min-width: 300px;
+    height: 700px;
+    margin: 100px auto;
+    background: linear-gradient(to bottom right, #5AB9EA, #8860D0);
+    border-radius: 60px;
+    box-shadow: 30px 30px 30px black;
+    margin-bottom: 100px;
+}
+
+.pict_block {
+    float: left;
+    width: 30%;
+    margin-left: 5%;
+    margin-top: 6%;
+    height: 60%;
+}
+
+.pict_block img{
+    height: 80%;
+    margin-left: 20%;
+    border-radius: 260px;
+}
+
+.info {
+    float: left;
+    width: 50%;
+    height: 70%;
+    margin-top: 5%;
+}
+
+.top-country {
+    height: 45%;
+}
+
+.top-city {
+    height: 45%;
+    margin-top: 5%;
+}
+
+.loc {
+    font-size: 250%;
+    font-weight: 700;
+    color: #8860D0;
+    text-align: center;
+    padding: 1%;
+    height: 30%;
+    border-radius: 40px;
+    background: linear-gradient(to bottom right, #395492, #0099C0, #3DD5A8);
+    box-shadow: 15px 15px 15px black;
+    font-family: sans-serif;
+}
+
+.reit {
+    font-size: 34px;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+    background: linear-gradient(to bottom right, #395492, #0099C0, #3DD5A8);
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 4%;
+    height: 20%;
+    border-radius: 100px;
+    box-shadow: 10px 10px 10px black;
+    font-family: sans-serif;
+}
+
+.pict_block p {
+    margin: 0 auto;
+    text-align: center;
+    height: 15%;
+    padding-top: 1.5%;
+    font-size: 32px;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+
+
+
+
+#zatemnenie {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#zatemnenie:target {display: block;}
+
+#zatemnenie_1 {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#zatemnenie_1:target {display: block;}
+
+#okno {
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #0000cc;
+    border-radius: 10px;
+    color: #0000cc;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.close {
+    display: inline-block;
+    border: 2px solid #42aaff;
+    border-radius: 20px/20px;
+    width: 100px;
+    color: black;
+    background: #FBEEC1;
+    padding: 0 12px;
+    margin: 20px;
+    text-decoration: none;
+    background: #f2f2f2;
+    font-size: 24px;
+    cursor:pointer;
+    font-weight: 400;
+    box-shadow: 2px 2px 5px black;
+}
+
+.close:hover {
+    background: #FBEEC1;
+    transform: scale(0.95);
 }

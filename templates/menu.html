@@ -37,13 +37,35 @@
             </div>
 
             <div class="logo_block">
-                <img src="{{url_for('static', filename='img/full_logo.jpg')}}" class="logo">
+                <img src="{{url_for('static', filename='img/full_logo.png')}}" class="logo">
             </div>
 
-            <ul class="main_menu">
-                <li><a href="{{url_for('menu')}}"><p>Главная</p></a></li>
-                <li><a href="{{url_for('authorization')}}"><p>Мой аккаунт</p></a></li>
-            </ul>
+
+            {% if current_user.is_authenticated %}
+
+                <div id="zatemnenie">
+                  <div id="okno">
+                      Вы хотите покинуть аккаунт ?<br>
+                    <a href="{{url_for('logout')}}" class="close">Да</a>
+                    <a href="{{url_for('menu')}}" class="close">Нет</a>
+                  </div>
+                </div>
+
+                <ul class="main_menu">
+                    <li><a href="{{url_for('menu')}}"><p>Главная</p></a></li>
+                    <li><a href="{{url_for('account')}}"><p>Мой аккаунт</p></a></li>
+                    <li><a href="#zatemnenie"><p>Выйти</p></a></li>
+                </ul>
+
+            {% else %}
+
+                <ul class="main_menu">
+                    <li><a href="{{url_for('menu')}}"><p>Главная</p></a></li>
+                    <li><a href="{{url_for('authorization')}}"><p>Мой аккаунт</p></a></li>
+                </ul>
+
+            {% endif %}
+
         </header>
 
         <div class="row">

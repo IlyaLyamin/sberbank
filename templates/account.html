@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Аккаунт</title>
-</head>
-<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<!-- Bootstrap reboot (для сброса стилей) -->
+	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+
+	<!-- Bootstrap сетка -->
+	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+	<!-- Шрифты с Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block title %}
+        {% if title %}
+          <title>{{ title }}</title>
+        {% else %}
+          <title>Udiliya</title>
+        {% endif %}
+    {% endblock title %}
+
+</head>
+
+
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="sb_block">
+                <img src="{{url_for('static', filename='img/Sber_logo.png')}}" class="sb_logo">
+            </div>
+
+            <div class="logo_block">
+                <img src="{{url_for('static', filename='img/full_logo.png')}}" class="logo">
+            </div>
+
+            {% if current_user.is_authenticated %}
+
+                <div id="zatemnenie">
+                  <div id="okno">
+                      Вы хотите покинуть аккаунт ?<br>
+                    <a href="{{url_for('logout')}}" class="close">Да</a>
+                    <a href="{{url_for('menu')}}" class="close">Нет</a>
+                  </div>
+                </div>
+
+                <ul class="main_menu">
+                    <li><a href="{{url_for('menu')}}"><p>Главная</p></a></li>
+                    <li><a href="{{url_for('account')}}"><p>Мой аккаунт</p></a></li>
+                    <li><a href="#zatemnenie"><p>Выйти</p></a></li>
+                </ul>
+
+            {% else %}
+
+                <ul class="main_menu">
+                    <li><a href="{{url_for('menu')}}"><p>Главная</p></a></li>
+                    <li><a href="{{url_for('authorization')}}"><p>Мой аккаунт</p></a></li>
+                </ul>
+
+            {% endif %}
+        </header>
+    </div>
+    <div class="container-account">
+        <div class="pict_block">
+            <img src="{{ url_for('static', filename='img/avatar.png')}}">
+            <p>{{ name }}</p>
+        </div>
+        <div class="info">
+            <div class="top-country">
+                <p class="loc">Россия</p>
+                <p class="reit">ваш рейтинг: {{ reit }}</p>
+                <p class="reit">ваше место: {{ place_country + 1}}/{{ s }}</p>
+            </div>
+            <div class="top-city">
+                <p class="loc">{{ location }}</p>
+                <p class="reit">ваш рейтинг: {{ reit }}</p>
+                <p class="reit">ваше место: {{ place + 1}}/{{ s_l }}</p>
+            </div>
+        </div>
+    </div>
 </body>
-</html>

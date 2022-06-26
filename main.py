@@ -21,12 +21,6 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect('/')
-
-
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
@@ -77,9 +71,35 @@ def authorization():
                            title='Авторизация')
 
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 def account():
-    pass
+    if current_user.is_authenticated:
+        loc = current_user.location
+        reit = current_user.reit
+        name = current_user.name + " " + current_user.surname
+        db_sess = db_session.create_session()
+        place_country = len(db_sess.query(User).filter(User.reit > reit).all())
+        us = db_sess.query(User).filter(User.location == loc).all()
+        place = 0
+        for i in us:
+            if i.reit > reit:
+                place += 1
+        s = len(db_sess.query(User).all())
+        s_l = len(db_sess.query(User).filter(User.location == loc).all())
+        return render_template('account.html',
+                               location=loc,
+                               reit=reit,
+                               place_country=place_country,
+                               s=s,
+                               place=place,
+                               s_l=s_l,
+                               name=name)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
 
 
 def main():
